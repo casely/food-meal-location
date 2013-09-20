@@ -4,4 +4,5 @@ mobile application for searching restaurant, bars and etc.
  * Alexeev Savva
  * Murlyan Mikhail
  * Popenkov Vladislav
+
 ## updates
