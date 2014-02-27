@@ -7,3 +7,4 @@ mobile application for searching restaurant, bars and etc.
  * Popenkov Vladislav
 
 ## updates
+- create list of places
