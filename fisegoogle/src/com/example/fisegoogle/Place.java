@@ -39,6 +39,7 @@ public class Place implements Serializable {
 		return name + " - " + id + " - " + reference;
 	}
 	
+	
 	public static class Geometry implements Serializable
 	{
 		@Key

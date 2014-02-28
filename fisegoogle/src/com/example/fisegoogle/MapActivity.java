@@ -11,20 +11,33 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.view.Menu;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 public class MapActivity extends FragmentActivity implements LocationListener{
 	
 	private GoogleMap map;
+	PlacesList nearPlaces;
+	PlaceDetails placeDetails;
+    String placeName;
+	double latPlaceMarker;
+	double longPlaceMarker;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		Intent i = getIntent();
+		nearPlaces = (PlacesList) i.getSerializableExtra("near_places"); 
 		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
 		if (status != ConnectionResult.SUCCESS) {
 			int requestCode = 10;
@@ -68,6 +81,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
  
         // Getting longitude of the current location
         double longitude = location.getLongitude();
+       
  
         // Creating a LatLng object for the current location
         LatLng latLng = new LatLng(latitude, longitude);
@@ -80,7 +94,28 @@ public class MapActivity extends FragmentActivity implements LocationListener{
  
         // Setting latitude and longitude in the TextView tv_location
         //tvLocation.setText("Широта:" +  latitude  + ", Долгота:"+ longitude );
- 
+        
+        // Маркер местоположения
+        map.addMarker(new MarkerOptions()
+        .position(new LatLng(latitude, longitude))
+        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+        .title("Вы здесь"));
+        
+        // Маркеры мест
+        if (nearPlaces != null) {
+        	for (Place place : nearPlaces.results) {
+        		placeName = place.name.toString();
+        		latPlaceMarker = place.geometry.location.lat;
+        		longPlaceMarker = place.geometry.location.lng;
+        		map.addMarker(new MarkerOptions()
+        		.position(new LatLng(latPlaceMarker, longPlaceMarker))
+        		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+        		.title(placeName));
+        	}
+        
+        }
+        
+        
     }
 	@Override
     public void onProviderDisabled(String provider) {
