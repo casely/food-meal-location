@@ -214,11 +214,11 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020015;
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
-        public static final int ic_launcher=0x7f020018;
-        public static final int ic_plusone_medium_off_client=0x7f020019;
-        public static final int ic_plusone_small_off_client=0x7f02001a;
-        public static final int ic_plusone_standard_off_client=0x7f02001b;
-        public static final int ic_plusone_tall_off_client=0x7f02001c;
+        public static final int ic_plusone_medium_off_client=0x7f020018;
+        public static final int ic_plusone_small_off_client=0x7f020019;
+        public static final int ic_plusone_standard_off_client=0x7f02001a;
+        public static final int ic_plusone_tall_off_client=0x7f02001b;
+        public static final int icon=0x7f02001c;
         public static final int logo=0x7f02001d;
     }
     public static final class id {
@@ -359,11 +359,6 @@ containing a value of this type.
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.

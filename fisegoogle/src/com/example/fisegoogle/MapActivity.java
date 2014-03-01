@@ -36,6 +36,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		getActionBar().setTitle("Карта");
 		Intent i = getIntent();
 		nearPlaces = (PlacesList) i.getSerializableExtra("near_places"); 
 		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
