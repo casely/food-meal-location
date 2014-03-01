@@ -4,6 +4,7 @@
     <string name="app_name">Food is everywhere</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Настройки</string>
+    <string name="exit">Выход</string>
     <string name="title_activity_main">Food is everywhere</string>
     
 </resources>
