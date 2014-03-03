@@ -42,7 +42,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		getActionBar().setTitle("Заведения");
 		
-
 		cd = new ConnectionDetector(getApplicationContext());
 
 		// Check if Internet present
@@ -152,7 +151,7 @@ public class MainActivity extends Activity {
 				// If you want all types places make it as null
 				// Check list of types supported by google
 				// 
-				String types = "cafe|bar|restaurant"; // Listing places only cafes, restaurants
+				String types = "restaurant"; // Listing places only cafes, restaurants
 				
 				// Radius in meters - increase this value if you don't find any places
 				double radius = 1000; // 1000 meters 

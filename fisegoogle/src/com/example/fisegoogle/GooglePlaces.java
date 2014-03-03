@@ -55,6 +55,8 @@ public class GooglePlaces {
 			request.getUrl().put("location", _latitude + "," + _longitude);
 			request.getUrl().put("radius", _radius); // in meters
 			request.getUrl().put("sensor", "false");
+			request.getUrl().put("language", "ru");
+			request.getUrl().put("rankBy", _radius);
 			if(types != null)
 				request.getUrl().put("types", types);
 
@@ -84,6 +86,7 @@ public class GooglePlaces {
 			request.getUrl().put("key", API_KEY);
 			request.getUrl().put("reference", reference);
 			request.getUrl().put("sensor", "false");
+			request.getUrl().put("language", "ru");
 
 			PlaceDetails place = request.execute().parseAs(PlaceDetails.class);
 			
