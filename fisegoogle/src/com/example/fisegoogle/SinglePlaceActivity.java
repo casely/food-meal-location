@@ -30,6 +30,7 @@ public class SinglePlaceActivity extends Activity {
 	
 	// KEY Strings
 	public static String KEY_REFERENCE = "reference"; // id of the place
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,6 @@ public class SinglePlaceActivity extends Activity {
 		new LoadSinglePlaceDetails().execute(reference);
 	}
 	
-	
 	/**
 	 * Background Async Task to Load Google places
 	 * */
@@ -55,6 +55,9 @@ public class SinglePlaceActivity extends Activity {
 		/**
 		 * Before starting background thread Show Progress Dialog
 		 * */
+		
+
+	
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -64,6 +67,7 @@ public class SinglePlaceActivity extends Activity {
 			pDialog.setCancelable(false);
 			pDialog.show();
 		}
+
 
 		/**
 		 * getting Profile JSON
@@ -106,10 +110,9 @@ public class SinglePlaceActivity extends Activity {
 								String name = placeDetails.result.name;
 								String address = placeDetails.result.formatted_address;
 								String phone = placeDetails.result.formatted_phone_number;
-								String latitude = Double.toString(placeDetails.result.geometry.location.lat);
-								String longitude = Double.toString(placeDetails.result.geometry.location.lng);
+	
 								
-								Log.d("Place ", name + address + phone + latitude + longitude);
+								Log.d("Place ", name + address + phone);
 								
 								// Displaying all the details in the view
 								// single_place.xml
@@ -122,8 +125,6 @@ public class SinglePlaceActivity extends Activity {
 								name = name == null ? "Отсутствует" : name; // if name is null display as "Not present"
 								address = address == null ? "Отсутствует" : address;
 								phone = phone == null ? "Отсутствует" : phone;
-								latitude = latitude == null ? "Отсутствует" : latitude;
-								longitude = longitude == null ? "Отсутствует" : longitude;
 								
 								lbl_name.setText(name);
 								lbl_address.setText(address);

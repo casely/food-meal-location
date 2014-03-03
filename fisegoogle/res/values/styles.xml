@@ -13,5 +13,8 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
+    <style name="dashboard">
+        <item name="android:numColumns">2</item>
+    </style>
 
 </resources>

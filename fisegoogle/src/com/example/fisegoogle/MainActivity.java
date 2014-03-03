@@ -216,38 +216,38 @@ public class MainActivity extends Activity {
 					}
 					else if(status.equals("ZERO_RESULTS")){
 						// Zero results found
-						alert.showAlertDialog(MainActivity.this, "Ближайшие места",
-								"Извините, места не найдены. Повторите попытку",
+						alert.showAlertDialog(MainActivity.this, "Ошибка",
+								"Извините, но выбранное место отсутствует. Попробуйте изменить запрос.",
 								false);
 					}
 					else if(status.equals("UNKNOWN_ERROR"))
 					{
 						alert.showAlertDialog(MainActivity.this, "Ошибка",
-								"Извините, неизвестная ошибка",
+								"Извините, ошибка на стороне сервера. Попробуйте перезапустить приложение.",
 								false);
 					}
 					else if(status.equals("OVER_QUERY_LIMIT"))
 					{
 						alert.showAlertDialog(MainActivity.this, "Ошибка",
-								"Извините, лимит запросов исчерпан",
+								"Извините, превышена квота. Попробуйте перезапустить приложение.",
 								false);
 					}
 					else if(status.equals("REQUEST_DENIED"))
 					{
 						alert.showAlertDialog(MainActivity.this, "Ошибка",
-								"Извините, произошла ошибка",
+								"Извините, запрос отклонен. Включите GPS и перезапустите приложение.",
 								false);
 					}
 					else if(status.equals("INVALID_REQUEST"))
 					{
 						alert.showAlertDialog(MainActivity.this, "Ошибка",
-								"Вы ввели неверный запрос. Попробуйте снова",
+								"Вы ввели неверный запрос.",
 								false);
 					}
 					else
 					{
 						alert.showAlertDialog(MainActivity.this, "Ошибка",
-								"Извините, произошла ошибка",
+								"Извините, но указанное место отсутствует в базе данных Google.",
 								false);
 					}
 				}
