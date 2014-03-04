@@ -40,7 +40,7 @@ public class BarActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		getActionBar().setTitle("Кафе");
+		getActionBar().setTitle("Бары");
 		
 		cd = new ConnectionDetector(getApplicationContext());
 
