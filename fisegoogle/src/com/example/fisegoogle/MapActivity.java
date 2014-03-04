@@ -133,11 +133,13 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         // TODO Auto-generated method stub
     }
  
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-
+    }*/
+    
 }
+
+
