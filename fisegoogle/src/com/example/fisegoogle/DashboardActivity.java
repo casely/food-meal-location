@@ -21,10 +21,10 @@ public class DashboardActivity extends Activity implements OnItemClickListener {
     static final String EXTRA_MAP = "map";
  
     static final LauncherIcon[] ICONS = {
-            new LauncherIcon(R.drawable.ic_launcher, "Рестораны", "metro.png"),
-            new LauncherIcon(R.drawable.ic_launcher, "Кафе", "rer.png"),
-            new LauncherIcon(R.drawable.ic_launcher, "Бары", "bus.png"),
-            new LauncherIcon(R.drawable.ic_launcher, "Noctilien", "noctilien.png"),
+            new LauncherIcon(R.drawable.restaurant, "Рестораны", "restaurant.png"),
+            new LauncherIcon(R.drawable.cafe, "Кафе", "cafe.png"),
+            new LauncherIcon(R.drawable.bar, "Бары", "bar.png"),
+            new LauncherIcon(R.drawable.map, "Карта", "map.png"),
     };
  
     @Override
