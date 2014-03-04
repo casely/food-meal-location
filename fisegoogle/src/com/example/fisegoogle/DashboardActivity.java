@@ -48,8 +48,25 @@ public class DashboardActivity extends Activity implements OnItemClickListener {
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(EXTRA_MAP, ICONS[position].map);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, MapActivity.class);
+        Intent intent3 = new Intent(this, CafeActivity.class);
+        Intent intent4 = new Intent(this, BarActivity.class);
+        if (position == 0) {
+        	intent.putExtra(EXTRA_MAP, ICONS[0].map);
+        	startActivity(intent);
+        }
+        else if (position == 1) {
+        	intent3.putExtra(EXTRA_MAP, ICONS[1].map);
+        	startActivity(intent3);
+        }
+        else if (position == 2) { 
+        	intent3.putExtra(EXTRA_MAP, ICONS[2].map);
+        	startActivity(intent4);
+        }
+        else if (position == 3) {
+        	intent2.putExtra(EXTRA_MAP, ICONS[3].map);
+        	startActivity(intent2);
+        }
     }
  
     static class LauncherIcon {

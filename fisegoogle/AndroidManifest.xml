@@ -46,7 +46,9 @@
     	</activity>
 		<activity android:name="DashboardActivity"></activity>
 		<activity android:name="MainActivity"></activity>
+		<activity android:name="CafeActivity"></activity>
     	<activity android:name="MapActivity"></activity>
+    	<activity android:name="BarActivity"></activity>
     	<activity android:name="PlaceDetailsActivity"></activity>   
     	<activity android:name="SinglePlaceActivity"></activity>
     	<meta-data 
