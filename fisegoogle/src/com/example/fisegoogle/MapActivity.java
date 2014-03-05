@@ -9,12 +9,10 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.view.Menu;
-import android.widget.TextView;
+
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Dialog;
@@ -26,6 +24,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
 	
 	private GoogleMap map;
 	PlacesList nearPlaces;
+	PlaceDetails nearPlace;
 	PlaceDetails placeDetails;
     String placeName;
 	double latPlaceMarker;
@@ -38,7 +37,9 @@ public class MapActivity extends FragmentActivity implements LocationListener{
 		setContentView(R.layout.activity_map);
 		getActionBar().setTitle("Карта");
 		Intent i = getIntent();
+		
 		nearPlaces = (PlacesList) i.getSerializableExtra("near_places"); 
+		
 		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
 		if (status != ConnectionResult.SUCCESS) {
 			int requestCode = 10;
@@ -53,7 +54,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
             map = fm.getMap();
  
             // Enabling MyLocation Layer of Google Map
-            map.setMyLocationEnabled(true);
+            map.setMyLocationEnabled(false);
  
             // Getting LocationManager object from System Service LOCATION_SERVICE
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -83,7 +84,10 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         // Getting longitude of the current location
         double longitude = location.getLongitude();
        
- 
+        Intent i = getIntent();
+        //String place_latitude = i.getStringExtra("near_place_lat");
+        //String place_longitude = i.getStringExtra("near_place_long");
+        
         // Creating a LatLng object for the current location
         LatLng latLng = new LatLng(latitude, longitude);
  
@@ -102,6 +106,14 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
         .title("Вы здесь"));
         
+		/*double lat2 = Double.parseDouble(place_latitude);
+		double lng2 = Double.parseDouble(place_longitude);
+        
+		map.addMarker(new MarkerOptions()
+        .position(new LatLng(lat2, lng2))
+        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+        .title("PLACE"));*/
+        
         // Маркеры мест
         if (nearPlaces != null) {
         	for (Place place : nearPlaces.results) {
@@ -113,9 +125,12 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
         		.title(placeName));
         	}
-        
-        }
-        
+        	
+        } 
+
+  
+        		
+
         
     }
 	@Override

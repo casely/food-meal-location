@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		getActionBar().setTitle("Рестораны");
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		cd = new ConnectionDetector(getApplicationContext());
 
 		// Check if Internet present

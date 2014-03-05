@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SinglePlaceActivity extends Activity {
@@ -31,6 +33,13 @@ public class SinglePlaceActivity extends Activity {
 	// Progress dialog
 	ProgressDialog pDialog;
 	
+	Button btnShowOnMap;
+	
+	PlacesList nearPlaces;
+	GPSTracker gps;
+	
+	PlaceDetails nearPlace;
+	
 	// KEY Strings
 	public static String KEY_REFERENCE = "reference"; // id of the place
 
@@ -48,6 +57,41 @@ public class SinglePlaceActivity extends Activity {
 		
 		// Calling a Async Background thread
 		new LoadSinglePlaceDetails().execute(reference);
+		
+		gps = new GPSTracker(this);
+
+		// check if GPS location can get
+		if (gps.canGetLocation()) {
+			Log.d("Your Location", "latitude:" + gps.getLatitude() + ", longitude: " + gps.getLongitude());
+		} else {
+			// Can't get user's current location
+			alert.showAlertDialog(SinglePlaceActivity.this, "GPS Status",
+					"Couldn't get location information. Please enable GPS",
+					false);
+			// stop executing code by return
+			return;
+		}
+		
+		btnShowOnMap = (Button) findViewById(R.id.btn_show_map);
+		
+		
+		btnShowOnMap.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(getApplicationContext(),
+						MapActivity.class);
+				
+				// Sending user current geo location
+				//i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
+				//i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
+
+				i.putExtra("near_place_lat", Double.toString(placeDetails.result.geometry.location.lat));
+				i.putExtra("near_place_long", Double.toString(placeDetails.result.geometry.location.lng));
+				// staring activity
+				startActivity(i);
+			}
+		});
 	}
 	
 	

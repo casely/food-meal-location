@@ -43,6 +43,8 @@ public class BarActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		getActionBar().setTitle("Бары");
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		cd = new ConnectionDetector(getApplicationContext());
 
 		// Check if Internet present
