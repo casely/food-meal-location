@@ -26,7 +26,8 @@
  * Фильтр https://github.com/casely/food-meal-location/blob/master/interface/filter.jpg
  * Информация о заведении https://github.com/casely/food-meal-location/blob/master/interface/info.jpg
  * Карта https://github.com/casely/food-meal-location/blob/master/interface/map.jpg
+
 ## Цвета интерфейса
- * "#ffffff"-white; "#fc4349"-red;"#01cde6"-blue
+ "#ffffff"-white; "#fc4349"-red;"#01cde6"-blue
 
 
