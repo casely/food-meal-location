@@ -50,18 +50,6 @@ public class SinglePlaceActivity extends Activity {
 		new LoadSinglePlaceDetails().execute(reference);
 	}
 	
-	// Distance from current location to place
-	private double calculateDistance(double fromLong, double fromLat,
-    double toLong, double toLat) {
-        double d2r = Math.PI / 180;
-        double dLong = (toLong - fromLong) * d2r;
-        double dLat = (toLat - fromLat) * d2r;
-        double a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(fromLat * d2r)
-                * Math.cos(toLat * d2r) * Math.pow(Math.sin(dLong / 2.0), 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double d = 6367000 * c;
-        return Math.round(d);
-    }
 	
 	/**
 	 * Background Async Task to Load Google places
@@ -129,6 +117,8 @@ public class SinglePlaceActivity extends Activity {
 								double lat2 = placeDetails.result.geometry.location.lat;
 								double lng2 = placeDetails.result.geometry.location.lng;
 								
+								
+								
 								// Current location
 								Criteria criteria = new Criteria();
 								LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -136,9 +126,17 @@ public class SinglePlaceActivity extends Activity {
 								Location location = locationManager.getLastKnownLocation(provider);
 								double lat1 = location.getLatitude();
 							    double long1 = location.getLongitude();
-								
+							    
 							    // Calculate distance
-								double dist = calculateDistance(lat1,long1,lat2,lng2);
+							    Location locationA = new Location("point A");
+								locationA.setLatitude(lat1);
+								locationA.setLongitude(long1);
+								
+								Location locationB = new Location("point B");
+								locationB.setLatitude(lat2);
+								locationB.setLongitude(lng2);
+								
+							    float dist = locationA.distanceTo(locationB);
 				
 								Log.d("Place ", name + address + phone);
 								
