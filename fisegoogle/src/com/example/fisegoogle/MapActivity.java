@@ -103,7 +103,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         // Маркер местоположения
         map.addMarker(new MarkerOptions()
         .position(new LatLng(latitude, longitude))
-        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.current))
         .title("Вы здесь"));
         
 		/*double lat2 = Double.parseDouble(place_latitude);
@@ -122,7 +122,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         		longPlaceMarker = place.geometry.location.lng;
         		map.addMarker(new MarkerOptions()
         		.position(new LatLng(latPlaceMarker, longPlaceMarker))
-        		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+        		.icon(BitmapDescriptorFactory.fromResource(R.drawable.place))
         		.title(placeName));
         	}
         	

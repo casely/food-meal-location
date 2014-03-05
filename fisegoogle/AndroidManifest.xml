@@ -27,7 +27,7 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/CustomActionBarTheme" >
+        android:theme="@style/AppTheme" >
     
     	<meta-data 
         	android:name="com.google.android.gms.version"
@@ -50,8 +50,10 @@
 		     android:parentActivityName="com.example.myfirstapp.DashboardActivity" />
 		<activity 
 		    android:name="CafeActivity"
-		    android:parentActivityName="com.example.myfirstapp.DashboardActivity"/>
-    	<activity android:name="MapActivity" />
+		    android:parentActivityName="com.example.myfirstapp.DashboardActivity" />
+    	<activity 
+    	    android:name="MapActivity" 
+    	    android:theme="@style/CustomActionBarTheme" />
     	<activity 
     	    android:name="BarActivity"
     	    android:parentActivityName="com.example.myfirstapp.DashboardActivity" />
