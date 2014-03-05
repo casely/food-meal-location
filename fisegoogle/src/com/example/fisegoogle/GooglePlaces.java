@@ -24,7 +24,7 @@ public class GooglePlaces {
 	private static final String API_KEY = "AIzaSyBxzk3o2RXVlzhZBH5soyoClv7Hp2gxv3E"; // place your API key here
 
 	// Google Places search url's
-	private static final String PLACES_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/search/json?";
+	private static final String PLACES_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/search/json?rankby=distance&";
 	private static final String PLACES_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json?";
 
 	private double _latitude;
@@ -45,6 +45,7 @@ public class GooglePlaces {
 		this._latitude = latitude;
 		this._longitude = longitude;
 		this._radius = radius;
+		//this._rankby = _rankby;
 
 		try {
 
@@ -53,7 +54,7 @@ public class GooglePlaces {
 					.buildGetRequest(new GenericUrl(PLACES_SEARCH_URL));
 			request.getUrl().put("key", API_KEY);
 			request.getUrl().put("location", _latitude + "," + _longitude);
-			request.getUrl().put("radius", _radius); // in meters
+			//request.getUrl().put("radius", _radius); // in meters
 			request.getUrl().put("sensor", "false");
 			request.getUrl().put("language", "ru");
 			request.getUrl().put("rankBy", _radius);
