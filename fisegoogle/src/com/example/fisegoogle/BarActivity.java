@@ -201,6 +201,7 @@ public class BarActivity extends Activity {
 								// Place name
 								map.put(KEY_NAME, p.name);
 								
+								map.put(KEY_VICINITY, p.vicinity);
 								
 								// adding HashMap to ArrayList
 								placesListItems.add(map);
@@ -208,8 +209,8 @@ public class BarActivity extends Activity {
 							// list adapter
 							ListAdapter adapter = new SimpleAdapter(BarActivity.this, placesListItems,
 					                R.layout.list_item,
-					                new String[] { KEY_REFERENCE, KEY_NAME}, new int[] {
-					                        R.id.reference, R.id.name });
+					                new String[] { KEY_REFERENCE, KEY_NAME, KEY_VICINITY}, new int[] {
+					                        R.id.reference, R.id.name, R.id.vicinity });
 							
 							// Adding data into listview
 							lv.setAdapter(adapter);
