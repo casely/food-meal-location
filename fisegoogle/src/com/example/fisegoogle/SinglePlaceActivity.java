@@ -1,15 +1,20 @@
 package com.example.fisegoogle;
 
+import com.example.fisegoogle.MainActivity.LoadPlaces;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SinglePlaceActivity extends Activity {
@@ -31,6 +36,18 @@ public class SinglePlaceActivity extends Activity {
 	// Progress dialog
 	ProgressDialog pDialog;
 	
+	Button btnShowOnMap;
+	
+	PlacesList nearPlaces;
+	GPSTracker gps;
+	
+	PlaceDetails nearPlace;
+	
+	double nearPlaceLat;
+	double nearPlaceLong;
+	
+	String nearPlaceName;
+	
 	// KEY Strings
 	public static String KEY_REFERENCE = "reference"; // id of the place
 
@@ -48,6 +65,43 @@ public class SinglePlaceActivity extends Activity {
 		
 		// Calling a Async Background thread
 		new LoadSinglePlaceDetails().execute(reference);
+
+		gps = new GPSTracker(this);
+
+		// check if GPS location can get
+		if (gps.canGetLocation()) {
+			Log.d("Your Location", "latitude:" + gps.getLatitude() + ", longitude: " + gps.getLongitude());
+		} else {
+			// Can't get user's current location
+			alert.showAlertDialog(SinglePlaceActivity.this, "GPS Status",
+					"Couldn't get location information. Please enable GPS",
+					false);
+			// stop executing code by return
+			return;
+		}
+		
+		btnShowOnMap = (Button) findViewById(R.id.btn_show_map);
+
+		btnShowOnMap.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(getApplicationContext(),
+						MapActivity.class);
+
+				i.putExtra("near_places", nearPlaces);
+				// Sending user current geo location
+				i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
+				i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
+
+				i.putExtra("near_place_lat", Double.toString(nearPlaceLat));
+				i.putExtra("near_place_long", Double.toString(nearPlaceLong));
+				
+				i.putExtra("near_place_name", nearPlaceName);
+				// staring activity
+				startActivity(i);
+			}
+		});
 	}
 	
 	
@@ -83,6 +137,9 @@ public class SinglePlaceActivity extends Activity {
 			// Check if used is connected to Internet
 			try {
 				placeDetails = googlePlaces.getPlaceDetails(reference);
+				nearPlaceLat = placeDetails.result.geometry.location.lat;
+				nearPlaceLong = placeDetails.result.geometry.location.lng;
+				nearPlaceName = placeDetails.result.name;
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -116,9 +173,7 @@ public class SinglePlaceActivity extends Activity {
 								// Place location
 								double lat2 = placeDetails.result.geometry.location.lat;
 								double lng2 = placeDetails.result.geometry.location.lng;
-								
-								
-								
+
 								// Current location
 								Criteria criteria = new Criteria();
 								LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);

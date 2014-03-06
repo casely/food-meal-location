@@ -9,12 +9,10 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.view.Menu;
-import android.widget.TextView;
+
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Dialog;
@@ -26,7 +24,6 @@ public class MapActivity extends FragmentActivity implements LocationListener{
 	
 	private GoogleMap map;
 	PlacesList nearPlaces;
-	PlaceDetails placeDetails;
     String placeName;
 	double latPlaceMarker;
 	double longPlaceMarker;
@@ -38,7 +35,9 @@ public class MapActivity extends FragmentActivity implements LocationListener{
 		setContentView(R.layout.activity_map);
 		getActionBar().setTitle("Карта");
 		Intent i = getIntent();
+		
 		nearPlaces = (PlacesList) i.getSerializableExtra("near_places"); 
+		
 		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
 		if (status != ConnectionResult.SUCCESS) {
 			int requestCode = 10;
@@ -53,7 +52,7 @@ public class MapActivity extends FragmentActivity implements LocationListener{
             map = fm.getMap();
  
             // Enabling MyLocation Layer of Google Map
-            map.setMyLocationEnabled(true);
+            map.setMyLocationEnabled(false);
  
             // Getting LocationManager object from System Service LOCATION_SERVICE
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -83,41 +82,49 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         // Getting longitude of the current location
         double longitude = location.getLongitude();
        
- 
+        
+        Intent i = getIntent(); 
+        String near_place_lat = i.getStringExtra("near_place_lat");
+        String near_place_long = i.getStringExtra("near_place_long");
+        String near_place_name = i.getStringExtra("near_place_name");
+        
         // Creating a LatLng object for the current location
         LatLng latLng = new LatLng(latitude, longitude);
+        
  
         // Showing the current location in Google Map
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
  
         // Zoom in the Google Map
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
- 
-        // Setting latitude and longitude in the TextView tv_location
-        //tvLocation.setText("Широта:" +  latitude  + ", Долгота:"+ longitude );
         
         // Маркер местоположения
         map.addMarker(new MarkerOptions()
         .position(new LatLng(latitude, longitude))
-        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.current))
         .title("Вы здесь"));
         
         // Маркеры мест
-        if (nearPlaces != null) {
+        if (near_place_lat != null && near_place_long != null) {
+        	map.addMarker(new MarkerOptions()
+        	.position(new LatLng(Double.parseDouble(near_place_lat), Double.parseDouble(near_place_long)))
+        	.icon(BitmapDescriptorFactory.fromResource(R.drawable.place))
+        	.title(near_place_name));
+        }
+        else if (nearPlaces != null) {
         	for (Place place : nearPlaces.results) {
         		placeName = place.name.toString();
         		latPlaceMarker = place.geometry.location.lat;
         		longPlaceMarker = place.geometry.location.lng;
         		map.addMarker(new MarkerOptions()
         		.position(new LatLng(latPlaceMarker, longPlaceMarker))
-        		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+        		.icon(BitmapDescriptorFactory.fromResource(R.drawable.place))
         		.title(placeName));
         	}
-        
         }
-        
-        
-    }
+
+        }
+
 	@Override
     public void onProviderDisabled(String provider) {
         // TODO Auto-generated method stub

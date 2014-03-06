@@ -12,7 +12,8 @@
         android:text="Показать на карте"
         android:layout_alignParentTop="true"
         android:background="#59C8FF" 
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white" 
+        android:textAppearance="?android:textAppearanceSmall"/>
     
     <!--  List view -->
     <ListView

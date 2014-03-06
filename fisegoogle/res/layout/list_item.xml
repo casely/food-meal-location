@@ -18,7 +18,7 @@
         android:paddingRight="10dip"
         android:paddingBottom="5dip"
         android:textStyle="bold"
-        android:textSize="16dip"/>
+        android:textAppearance="?android:textAppearanceSmall"/>
     
     <TextView android:id="@+id/vicinity"
         android:layout_width="fill_parent"

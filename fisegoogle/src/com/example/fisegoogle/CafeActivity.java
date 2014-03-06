@@ -43,6 +43,8 @@ public class CafeActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		getActionBar().setTitle("Кафе");
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		cd = new ConnectionDetector(getApplicationContext());
 
 		// Check if Internet present

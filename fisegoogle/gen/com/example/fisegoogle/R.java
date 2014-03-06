@@ -190,33 +190,33 @@ containing a value of this type.
         public static final int activity_vertical_margin=0x7f080001;
     }
     public static final class drawable {
-        public static final int actionbar_background=0x7f020000;
-        public static final int bar=0x7f020001;
-        public static final int cafe=0x7f020002;
-        public static final int common_signin_btn_icon_dark=0x7f020003;
-        public static final int common_signin_btn_icon_disabled_dark=0x7f020004;
-        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020005;
-        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020006;
-        public static final int common_signin_btn_icon_disabled_light=0x7f020007;
-        public static final int common_signin_btn_icon_focus_dark=0x7f020008;
-        public static final int common_signin_btn_icon_focus_light=0x7f020009;
-        public static final int common_signin_btn_icon_light=0x7f02000a;
-        public static final int common_signin_btn_icon_normal_dark=0x7f02000b;
-        public static final int common_signin_btn_icon_normal_light=0x7f02000c;
-        public static final int common_signin_btn_icon_pressed_dark=0x7f02000d;
-        public static final int common_signin_btn_icon_pressed_light=0x7f02000e;
-        public static final int common_signin_btn_text_dark=0x7f02000f;
-        public static final int common_signin_btn_text_disabled_dark=0x7f020010;
-        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020011;
-        public static final int common_signin_btn_text_disabled_focus_light=0x7f020012;
-        public static final int common_signin_btn_text_disabled_light=0x7f020013;
-        public static final int common_signin_btn_text_focus_dark=0x7f020014;
-        public static final int common_signin_btn_text_focus_light=0x7f020015;
-        public static final int common_signin_btn_text_light=0x7f020016;
-        public static final int common_signin_btn_text_normal_dark=0x7f020017;
-        public static final int common_signin_btn_text_normal_light=0x7f020018;
-        public static final int common_signin_btn_text_pressed_dark=0x7f020019;
-        public static final int common_signin_btn_text_pressed_light=0x7f02001a;
+        public static final int bar=0x7f020000;
+        public static final int cafe=0x7f020001;
+        public static final int common_signin_btn_icon_dark=0x7f020002;
+        public static final int common_signin_btn_icon_disabled_dark=0x7f020003;
+        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020004;
+        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020005;
+        public static final int common_signin_btn_icon_disabled_light=0x7f020006;
+        public static final int common_signin_btn_icon_focus_dark=0x7f020007;
+        public static final int common_signin_btn_icon_focus_light=0x7f020008;
+        public static final int common_signin_btn_icon_light=0x7f020009;
+        public static final int common_signin_btn_icon_normal_dark=0x7f02000a;
+        public static final int common_signin_btn_icon_normal_light=0x7f02000b;
+        public static final int common_signin_btn_icon_pressed_dark=0x7f02000c;
+        public static final int common_signin_btn_icon_pressed_light=0x7f02000d;
+        public static final int common_signin_btn_text_dark=0x7f02000e;
+        public static final int common_signin_btn_text_disabled_dark=0x7f02000f;
+        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020010;
+        public static final int common_signin_btn_text_disabled_focus_light=0x7f020011;
+        public static final int common_signin_btn_text_disabled_light=0x7f020012;
+        public static final int common_signin_btn_text_focus_dark=0x7f020013;
+        public static final int common_signin_btn_text_focus_light=0x7f020014;
+        public static final int common_signin_btn_text_light=0x7f020015;
+        public static final int common_signin_btn_text_normal_dark=0x7f020016;
+        public static final int common_signin_btn_text_normal_light=0x7f020017;
+        public static final int common_signin_btn_text_pressed_dark=0x7f020018;
+        public static final int common_signin_btn_text_pressed_light=0x7f020019;
+        public static final int current=0x7f02001a;
         public static final int ic_launcher=0x7f02001b;
         public static final int ic_plusone_medium_off_client=0x7f02001c;
         public static final int ic_plusone_small_off_client=0x7f02001d;
@@ -225,7 +225,8 @@ containing a value of this type.
         public static final int icon=0x7f020020;
         public static final int logo=0x7f020021;
         public static final int map=0x7f020022;
-        public static final int restaurant=0x7f020023;
+        public static final int place=0x7f020023;
+        public static final int restaurant=0x7f020024;
     }
     public static final class id {
         public static final int address=0x7f050011;
@@ -368,11 +369,8 @@ containing a value of this type.
         public static final int title_activity_main=0x7f06001e;
     }
     public static final class style {
+        public static final int AppActionBar=0x7f090004;
         /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     
@@ -384,12 +382,20 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f090006;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
-        public static final int dashboard=0x7f090002;
+        public static final int AppTheme=0x7f090003;
+        /** 
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+ MapActivity theme. 
+         */
+        public static final int CustomActionBarTheme=0x7f090000;
+        public static final int MyActionBar=0x7f090001;
+        public static final int TitleTextStyle=0x7f090002;
+        public static final int dashboard=0x7f090005;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
