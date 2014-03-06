@@ -43,7 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"/>
     
-    
     <!-- Location Value -->
     <TextView
         android:id="@+id/location"
@@ -51,15 +50,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dip"
         android:layout_marginBottom="5dip"/>
-    
-    <Button android:id="@+id/btn_show_map"
+
+    <Button
+        android:id="@+id/btn_show_map"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="#59C8FF"
         android:text="Показать на карте"
-        android:layout_alignParentTop="true"
-        android:background="#59C8FF" 
+        android:layout_marginTop="15dip"
         android:textColor="@android:color/white" />
-   
-
 
 </LinearLayout>

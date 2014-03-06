@@ -25,7 +25,7 @@ public class GooglePlaces {
 
 	// Google Places search url's
 	private static final String PLACES_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/search/json?rankby=distance&";
-	private static final String PLACES_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json?";
+	private static final String PLACES_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json";
 
 	private double _latitude;
 	private double _longitude;

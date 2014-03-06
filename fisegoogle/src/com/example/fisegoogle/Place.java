@@ -33,6 +33,7 @@ public class Place implements Serializable {
 	
 	@Key
 	public String formatted_phone_number;
+	
 
 	@Override
 	public String toString() {

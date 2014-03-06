@@ -24,8 +24,6 @@ public class MapActivity extends FragmentActivity implements LocationListener{
 	
 	private GoogleMap map;
 	PlacesList nearPlaces;
-	PlaceDetails nearPlace;
-	PlaceDetails placeDetails;
     String placeName;
 	double latPlaceMarker;
 	double longPlaceMarker;
@@ -84,21 +82,21 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         // Getting longitude of the current location
         double longitude = location.getLongitude();
        
-        Intent i = getIntent();
-        //String place_latitude = i.getStringExtra("near_place_lat");
-        //String place_longitude = i.getStringExtra("near_place_long");
+        
+        Intent i = getIntent(); 
+        String near_place_lat = i.getStringExtra("near_place_lat");
+        String near_place_long = i.getStringExtra("near_place_long");
+        String near_place_name = i.getStringExtra("near_place_name");
         
         // Creating a LatLng object for the current location
         LatLng latLng = new LatLng(latitude, longitude);
+        
  
         // Showing the current location in Google Map
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
  
         // Zoom in the Google Map
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
- 
-        // Setting latitude and longitude in the TextView tv_location
-        //tvLocation.setText("Широта:" +  latitude  + ", Долгота:"+ longitude );
         
         // Маркер местоположения
         map.addMarker(new MarkerOptions()
@@ -106,16 +104,14 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.current))
         .title("Вы здесь"));
         
-		/*double lat2 = Double.parseDouble(place_latitude);
-		double lng2 = Double.parseDouble(place_longitude);
-        
-		map.addMarker(new MarkerOptions()
-        .position(new LatLng(lat2, lng2))
-        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-        .title("PLACE"));*/
-        
         // Маркеры мест
-        if (nearPlaces != null) {
+        if (near_place_lat != null && near_place_long != null) {
+        	map.addMarker(new MarkerOptions()
+        	.position(new LatLng(Double.parseDouble(near_place_lat), Double.parseDouble(near_place_long)))
+        	.icon(BitmapDescriptorFactory.fromResource(R.drawable.place))
+        	.title(near_place_name));
+        }
+        else if (nearPlaces != null) {
         	for (Place place : nearPlaces.results) {
         		placeName = place.name.toString();
         		latPlaceMarker = place.geometry.location.lat;
@@ -125,14 +121,10 @@ public class MapActivity extends FragmentActivity implements LocationListener{
         		.icon(BitmapDescriptorFactory.fromResource(R.drawable.place))
         		.title(placeName));
         	}
-        	
-        } 
+        }
 
-  
-        		
+        }
 
-        
-    }
 	@Override
     public void onProviderDisabled(String provider) {
         // TODO Auto-generated method stub
